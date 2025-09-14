@@ -7466,17 +7466,24 @@ am.Icon, am.Icon, 0, aj, "Section", true, am.IconThemed)
                                 PaddingRight = UDim.new(0, aj.Padding),
                                 PaddingBottom = UDim.new(0, aj.Padding - 2),
                             }),
-                            ae("ImageLabel", {
-                                Image = ac.Icon(as)[1],
-                                ImageRectSize = ac.Icon(as)[2].ImageRectSize,
-                                ImageRectOffset = ac.Icon(as)[2].ImageRectPosition,
-                                BackgroundTransparency = 1,
-                                ThemeTag = {
-                                    ImageColor3 = "Text",
-                                },
-                                ImageTransparency = .2,
-                                Size = UDim2.new(0, aj.IconSize, 0, aj.IconSize)
-                            }),
+                            local icon = ae("ImageLabel", {
+    Image = ac.Icon(as)[1],
+    ImageRectSize = ac.Icon(as)[2].ImageRectSize,
+    ImageRectOffset = ac.Icon(as)[2].ImageRectPosition,
+    BackgroundTransparency = 1,
+    ThemeTag = {
+        ImageColor3 = "Text",
+    },
+    ImageTransparency = 0.2,
+    Size = UDim2.new(0, aj.IconSize, 0, aj.IconSize)
+})
+
+local gradient = Instance.new("UIGradient")
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(192,224,255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0,0,0))
+}
+gradient.Parent = icon
                             ae("Frame", {
                                 Size = UDim2.new(1, - aj.IconSize - aj.Padding, 0, 0),
                                 BackgroundTransparency = 1,

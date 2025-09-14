@@ -1745,27 +1745,24 @@ i.Icon, i.Title .. ":" .. i.Icon, 0, h.Window, "Notification", i.IconThemed)
             ah = ah or "Primary"
             local al = not ak and 10 or 99
             local am
-            if af and af ~= "" then
-    ak = ac("ImageLabel", {
-        Size = UDim2.new(1, -7, 1, -7),
-        BackgroundTransparency = 1,
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.new(0.5, 0, 0.5, 0),
+if af and af ~= "" then
+    am = ac("ImageLabel", {
         Image = ab.Icon(af)[1],
-        ImageRectOffset = ab.Icon(af)[2].ImageRectPosition,
         ImageRectSize = ab.Icon(af)[2].ImageRectSize,
-        ImageTransparency = 1,
-        ImageColor3 = Color3.new(0, 0, 0),
+        ImageRectOffset = ab.Icon(af)[2].ImageRectPosition,
+        Size = UDim2.new(0, 21, 0, 21),
+        BackgroundTransparency = 1,
+        ThemeTag = {
+            ImageColor3 = "Icon",
+        }
     })
 
-    local gradient = ac("UIGradient", {
-        Parent = ak,
-        Color = ColorSequence.new{
-            ColorSequenceKeypoint.new(0, Color3.fromRGB(192, 224, 255)),
-            ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
-        },
-        Rotation = 0
-    })
+    local gradient = Instance.new("UIGradient")
+    gradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(192, 224, 255)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+    }
+    gradient.Parent = am
 end
             local an = ac("TextButton", {
                 Size = UDim2.new(0, 0, 1, 0),
